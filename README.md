@@ -1,7 +1,8 @@
 # Migrating to Jetpack Compose
 
 Code lab 6 - Composable from xml
-<img width="200" height="500" alt="image" src="https://github.com/user-attachments/assets/25d3770f-206b-454a-b1c3-6870ce048713" />
+<br/>
+<img align="right" width="200" height="500" alt="image" src="https://github.com/user-attachments/assets/25d3770f-206b-454a-b1c3-6870ce048713" />
 ```
 @Composable
 private fun PlantName(name: String) {
@@ -20,6 +21,36 @@ private fun PlantName(name: String) {
 private fun PlantNamePreview() {
     MaterialTheme {
         PlantName("Avocado")
+    }
+}
+```
+Code lab 7 - view model and live data
+<img align="right" width="206" height="158" alt="image" src="https://github.com/user-attachments/assets/1ec910ea-cf25-40c9-ae2c-f4ea5821a0ce" />
+
+```
+Code :
+@Composable
+fun PlantDetailDescription(plantDetailViewModel: PlantDetailViewModel) {
+    // Observes values coming from the VM's LiveData<Plant> field
+    val plant by plantDetailViewModel.plant.observeAsState()
+
+    // If plant is not null, display the content
+    plant?.let {
+        PlantDetailContent(it)
+    }
+}
+
+@Composable
+fun PlantDetailContent(plant: Plant) {
+    PlantName(plant.name)
+}
+
+@Preview
+@Composable
+private fun PlantDetailContentPreview() {
+    val plant = Plant("id", "Avocado", "description", 3, 30, "")
+    MaterialTheme {
+        PlantDetailContent(plant)
     }
 }
 ```
