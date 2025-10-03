@@ -94,7 +94,8 @@ private fun PlantWateringPreview() {
 }
 ```
 Code lab 9 - view in compose Code
-<img align="right" width="720" height="1600" alt="Screenshot_20251003_211027" src="https://github.com/user-attachments/assets/a6adf0f8-dd46-4e5b-8ef1-addd6d9a0122" />
+<img align="right" width="200" height="500" alt="Screenshot_20251003_211027" src="https://github.com/user-attachments/assets/a6adf0f8-dd46-4e5b-8ef1-addd6d9a0122" />
+
 ```
 @Composable
 private fun PlantDescription(description: String) {
