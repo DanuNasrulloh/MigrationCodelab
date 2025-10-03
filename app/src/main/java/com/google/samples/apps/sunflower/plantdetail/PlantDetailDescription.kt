@@ -17,6 +17,7 @@
 package com.google.samples.apps.sunflower.plantdetail
 
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -24,17 +25,50 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.google.samples.apps.sunflower.R
+import com.google.samples.apps.sunflower.data.Plant
+import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModel
 
 @Composable
-fun PlantDetailDescription() {
+fun PlantDetailDescription(plantDetailViewModel: PlantDetailViewModel) {
+    // Observes values coming from the VM's LiveData<Plant> field
+    val plant by plantDetailViewModel.plant.observeAsState()
+
+    // If plant is not null, display the content
+    plant?.let {
+        PlantDetailContent(it)
+    }
+}
+
+@Composable
+fun PlantDetailContent(plant: Plant) {
     Surface {
-        Text("Hello Compose")
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = dimensionResource(R.dimen.margin_normal))
+                .wrapContentWidth(Alignment.CenterHorizontally),
+        ) {
+            PlantName(plant.name)
+            //Watering
+            //Plant description
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun PlantDetailContentPreview() {
+    val plant = Plant("id", "Avocado", "description", 3, 30, "")
+    MaterialTheme {
+        PlantDetailContent(plant)
     }
 }
 @Composable

@@ -111,12 +111,10 @@ class PlantDetailFragment : Fragment() {
                 }
             }
             composeView.setContent {
-                // Composland
                 MaterialTheme {
-                    PlantDetailDescription()
+                    PlantDetailDescription(plantDetailViewModel)
                 }
             }
-
         }
         setHasOptionsMenu(true)
         return binding.root
