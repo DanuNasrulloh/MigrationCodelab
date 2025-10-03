@@ -174,7 +174,7 @@ fun SunflowerTheme(
 }
 ```
 Code lab 12 - view in compose Code
-<img align="right" width="1728" height="963" alt="image" src="https://github.com/user-attachments/assets/2b21e8b4-304b-4953-a045-1f8b21b4cda7" />
+<img align="right" width="400" height="300" alt="image" src="https://github.com/user-attachments/assets/2b21e8b4-304b-4953-a045-1f8b21b4cda7" />
 ```
 composeTestRule.activityRule.scenario.onActivity { gardenActivity ->
             activity = gardenActivity
