@@ -28,8 +28,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.google.samples.apps.sunflower.R
@@ -57,7 +61,7 @@ fun PlantDetailContent(plant: Plant) {
                 .wrapContentWidth(Alignment.CenterHorizontally),
         ) {
             PlantName(plant.name)
-            //Watering
+            PlantWatering(plant.wateringInterval)
             //Plant description
         }
     }
@@ -82,11 +86,46 @@ private fun PlantName(name: String) {
             .wrapContentWidth(Alignment.CenterHorizontally),
     )
 }
+@OptIn(ExperimentalComposeUiApi::class)
+@Composable
+private fun PlantWatering(wateringInterval: Int) {
+    Column(Modifier.fillMaxWidth()) {
+        // Same modifier used by both Texts
+        val centerWithPaddingModifier = Modifier
+            .padding(horizontal = dimensionResource(R.dimen.margin_small))
+            .align(Alignment.CenterHorizontally)
+
+        val normalPadding = dimensionResource(R.dimen.margin_normal)
+
+        Text(
+            text = stringResource(R.string.watering_needs_prefix),
+            color = MaterialTheme.colorScheme.primary,
+            fontWeight = FontWeight.Bold,
+            modifier = centerWithPaddingModifier.padding(top = normalPadding)
+        )
+
+        val wateringIntervalText = pluralStringResource(
+            R.plurals.watering_needs_suffix, wateringInterval, wateringInterval
+        )
+        Text(
+            text = wateringIntervalText,
+            modifier = centerWithPaddingModifier.padding(bottom = normalPadding)
+        )
+    }
+}
 
 @Preview
 @Composable
 private fun PlantNamePreview() {
     MaterialTheme {
         PlantName("Avocado")
+    }
+}
+
+@Preview
+@Composable
+private fun PlantWateringPreview() {
+    MaterialTheme {
+        PlantWatering(7)
     }
 }
