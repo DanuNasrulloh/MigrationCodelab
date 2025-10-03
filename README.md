@@ -127,16 +127,58 @@ private fun PlantDescriptionPreview() {
 }
 ```
 Code lab 10 - view in compose Code
-
 ```
-
+Code : 
+ composeView.apply {
+                setViewCompositionStrategy(
+                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+                )
+                setContent {
+                    MaterialTheme {
+                        PlantDetailDescription(plantDetailViewModel)
+                    }
+                }
+            }
 ```
 Code lab 11 - view in compose Code
 
 ```
-
+@Composable
+fun SunflowerTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    val lightColors  = lightColorScheme(
+        primary = colorResource(id = R.color.sunflower_green_500),
+        primaryContainer = colorResource(id = R.color.sunflower_green_700),
+        secondary = colorResource(id = R.color.sunflower_yellow_500),
+        background = colorResource(id = R.color.sunflower_green_500),
+        onPrimary = colorResource(id = R.color.sunflower_black),
+        onSecondary = colorResource(id = R.color.sunflower_black),
+    )
+    val darkColors  = darkColorScheme(
+        primary = colorResource(id = R.color.sunflower_green_100),
+        primaryContainer = colorResource(id = R.color.sunflower_green_200),
+        secondary = colorResource(id = R.color.sunflower_yellow_300),
+        onPrimary = colorResource(id = R.color.sunflower_black),
+        onSecondary = colorResource(id = R.color.sunflower_black),
+        onBackground = colorResource(id = R.color.sunflower_black),
+        surface = colorResource(id = R.color.sunflower_green_100_8pc_over_surface),
+        onSurface = colorResource(id = R.color.sunflower_white),
+    )
+    val colors = if (darkTheme) darkColors else lightColors
+    MaterialTheme(
+        colorScheme = colors,
+        content = content
+    )
+}
 ```
 Code lab 12 - view in compose Code
+<img align="right" width="1728" height="963" alt="image" src="https://github.com/user-attachments/assets/2b21e8b4-304b-4953-a045-1f8b21b4cda7" />
 ```
+composeTestRule.activityRule.scenario.onActivity { gardenActivity ->
+            activity = gardenActivity
 
+            val bundle = Bundle().apply { putString("plantId", "malus-pumila") }
+            findNavController(activity, R.id.nav_host).navigate(R.id.plant_detail_fragment, bundle)
 ```
