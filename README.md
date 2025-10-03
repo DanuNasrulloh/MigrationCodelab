@@ -1,5 +1,9 @@
-# Migrating to Jetpack Compose
 
+
+https://github.com/user-attachments/assets/7cb3c774-b615-431c-8d54-e54c04829dcd
+
+
+# Migrating to Jetpack Compose
 Code lab 6 - Composable from xml
 <br/>
 <img align="right" width="200" height="500" alt="image" src="https://github.com/user-attachments/assets/25d3770f-206b-454a-b1c3-6870ce048713" />
