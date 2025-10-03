@@ -92,3 +92,50 @@ private fun PlantWateringPreview() {
         PlantWatering(7)
     }
 }
+```
+Code lab 9 - view in compose Code
+<img align="right" width="720" height="1600" alt="Screenshot_20251003_211027" src="https://github.com/user-attachments/assets/a6adf0f8-dd46-4e5b-8ef1-addd6d9a0122" />
+```
+@Composable
+private fun PlantDescription(description: String) {
+    // Remembers the HTML formatted description. Re-executes on a new description
+    val htmlDescription = remember(description) {
+        HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_COMPACT)
+    }
+
+    // Displays the TextView on the screen and updates with the HTML description when inflated
+    // Updates to htmlDescription will make AndroidView recompose and update the text
+    AndroidView(
+        factory = { context ->
+            TextView(context).apply {
+                movementMethod = LinkMovementMethod.getInstance()
+            }
+        },
+        update = {
+            it.text = htmlDescription
+        }
+    )
+}
+
+@Preview
+@Composable
+private fun PlantDescriptionPreview() {
+    MaterialTheme {
+        PlantDescription("HTML<br><br>description")
+    }
+}
+```
+Code lab 10 - view in compose Code
+
+```
+
+```
+Code lab 11 - view in compose Code
+
+```
+
+```
+Code lab 12 - view in compose Code
+```
+
+```
