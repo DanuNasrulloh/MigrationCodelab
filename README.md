@@ -54,7 +54,7 @@ private fun PlantDetailContentPreview() {
     }
 }
 ```
-Code lab 7 - view model and live data
+Code lab 8 - view model and live data
 <img align="right" width="205" height="160" alt="image" src="https://github.com/user-attachments/assets/090b9001-efa9-45ab-b80e-685dde527938" />
 ```
 Code : @OptIn(ExperimentalComposeUiApi::class)
